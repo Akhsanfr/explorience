@@ -18,27 +18,22 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'nama',
         'email',
-        'password',
+        'google_id',
+        'avatar'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    }
+    public function role($role_match){
+        $roles = $this->roles;
+        foreach($roles as $role){
+            if($role->nama == $role_match){
+                return true;
+            }
+        }
+        return false;
+    }
 }
