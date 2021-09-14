@@ -13,6 +13,10 @@ class Header extends Component
         return redirect()->to(url('auth/login'));
     }
 
+    public function logout(){
+        session()->forget('user');
+    }
+
     public function render()
     {
         return view('livewire.c.header');
