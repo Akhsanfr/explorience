@@ -15,6 +15,7 @@ class Header extends Component
 
     public function logout(){
         session()->forget('user');
+        return redirect(route('home'));
     }
 
     public function render()
