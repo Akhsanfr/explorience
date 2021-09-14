@@ -18,6 +18,9 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        @livewireStyles
     </head>
     <body class="font-sans antialiased bg-base-100 leading-4">
         <livewire:c.header >
@@ -26,12 +29,12 @@
             {{ $slot }}
         </main>
         <livewire:c.footer>
+        @livewireScripts
         <script>
             function tema(){
                 return {
                     tema : 'dark',
                     setTema(){
-                        console.log(this.tema);
                         if(this.tema == 'light'){
                             document.cookie = "tema=dark; expires= 18 Dec 2022 12:00:00 UTC; SameSite=None; Secure";
                             this.tema = 'dark';

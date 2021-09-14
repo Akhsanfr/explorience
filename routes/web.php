@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Livewire\C\GoogleLogin;
 use App\Http\Livewire\S\Artikel;
 use App\Http\Livewire\S\Home;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +20,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', Home::class)->name('home');
 Route::get('/judul-artikel', Artikel::class)->name('artikel');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+Route::get('/auth/login', function(){
+    return Socialite::driver('google')->redirect();
+});
+Route::get('/auth/callback', GoogleLogin::class);
+
+
+// require __DIR__.'/auth.php';
