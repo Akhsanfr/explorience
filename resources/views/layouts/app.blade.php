@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="tema()" :data-theme="tema" x-init="cekTema()">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,21 +16,42 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-
+    <body class="font-sans antialiased bg-base-100 leading-4">
+        <livewire:c.header >
             <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+        <main>
+            {{ $slot }}
+        </main>
+        <livewire:c.footer>
+        <script>
+            function tema(){
+                return {
+                    tema : 'dark',
+                    setTema(){
+                        console.log(this.tema);
+                        if(this.tema == 'light'){
+                            document.cookie = "tema=dark; expires= 18 Dec 2022 12:00:00 UTC; SameSite=None; Secure";
+                            this.tema = 'dark';
+                        } else {
+                            document.cookie = "tema=light; expires= 18 Dec 2022 12:00:00 UTC; SameSite=None; Secure";
+                            this.tema = 'light';
+                        }
+                    },
+                    cekTema(){
+                        let tema;
+                        let key = 'tema';
+                        Cookies = decodeURIComponent(document.cookie).split(';');
+                        Cookies.forEach((e)=>{
+                            Cookie = e.substr(1);
+                            NamaCookie = Cookie.split('=')[0];
+                            if(NamaCookie == key){
+                                tema = Cookie.split('=')[1];
+                            }
+                        });
+                        return this.tema = tema;
+                    }
+                }
+            }
+        </script>
     </body>
 </html>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\S\Artikel;
+use App\Http\Livewire\S\Home;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', Home::class)->name('home');
+Route::get('/judul-artikel', Artikel::class)->name('artikel');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
