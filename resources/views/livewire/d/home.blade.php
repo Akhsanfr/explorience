@@ -1,3 +1,3 @@
-<div>
-    Hello kawan
-</div>
+<x-dashboard>
+    Ini bagian isi
+</x-dashboard>

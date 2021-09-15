@@ -19,7 +19,7 @@ class GoogleLogin extends Component
             $user_lama->email = $user->getEmail();
             $user_lama->avatar = $user->getAvatar();
             $user_lama->save();
-            session(['user'=>$user_lama]);
+            Auth::login($user_lama);
         } else {
             $user_baru = new User();
             $user_baru->google_id = $user->getId();
@@ -27,7 +27,7 @@ class GoogleLogin extends Component
             $user_baru->email = $user->getEmail();
             $user_baru->avatar = $user->getAvatar();
             $user_baru->save();
-            session(['user'=> $user_baru]);
+            Auth::login($user_baru);
         }
         return redirect(session('page_login'));
     }

@@ -3,11 +3,14 @@
         <img src="{{ asset('img/logo.png') }}" alt="">
     </a>
     <ul class="flex flex-row justify-center items-center space-x-4">
-        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('home') }}" class="{{ session('page_header')=='home' ? 'text-secondary font-bold' : '' }}">Home</a></li>
         <li><a href="#">New Release</a></li>
         <li><a href="#">Series</a></li>
         <li><a href="{{ route('artikel') }}">For You</a></li>
         <li><a href="#">About Us</a></li>
+        @can('team')
+            <li><a href="{{ route('d.home') }}" class="{{ session('page_header')=='dashboard' ? 'text-secondary font-bold' : '' }}">Dashboard</a></li>
+        @endcan
     </ul>
     <div class="form-control flex flex-row items-center space-x-4">
         <span class="flex items-center" @click="setTema()">
@@ -22,12 +25,12 @@
               </svg>
         </span>
         <div class="relative" x-data="{menu : false}">
-            @if (session('user'))
+            @if (Auth::user())
             <span  >
-                <img src="{{ session('user')->avatar }}" alt="" class="rounded-full h-8 w-8 cursor-pointer"  @click="menu = !menu" @click.outside="menu = false">
+                <img src="{{ Auth::user()->avatar }}" alt="" class="rounded-full h-8 w-8 cursor-pointer"  @click="menu = !menu" @click.outside="menu = false">
             </span>
             @else
-                <button class="btn btn-ghost btn-sm" wire:click="login('{{ url()->current() }}')">SIGN IN</button>
+                <a class="btn btn-ghost btn-sm" href="{{ route('auth.login') }}">SIGN IN</a>
             @endif
             {{-- Modal User --}}
             <ul class="menu py-3 shadow-lg bg-base-100 rounded-box absolute  top-12 right-0 whitespace-nowrap" x-show="menu" x-transition >
@@ -42,18 +45,21 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                               </svg>
-                            ADMIN
+                            DASHBOARD
                         </a>
                     </li>
                 @endcan
-                <li>
-                    <a wire:click="logout">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
-                          </svg>
-                        LOG OUT
-                    </a>
-                </li>
+                <form action="{{ route('auth.logout') }}" method="POST">
+                    @csrf
+                    <li>
+                        <a>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd" />
+                                </svg>
+                            LOG OUT
+                        </a>
+                    </li>
+                </form>
             </ul>
 
         </div>

@@ -4,8 +4,10 @@ use App\Http\Livewire\C\GoogleLogin;
 use App\Http\Livewire\S\Artikel;
 use App\Http\Livewire\S\Home;
 use App\Http\Livewire\D\Home as HomeDashboard;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,16 +24,22 @@ Route::get('/', Home::class)->name('home');
 Route::get('/judul-artikel', Artikel::class)->name('artikel');
 
 // DASHBOARD
-Route::prefix('dashboard')->middleware('can:team')->group(function () {
+Route::prefix('dashboard')->middleware(['auth','can:team'])->group(function () {
     Route::get('/', HomeDashboard::class)->name('d.home');
 });
 
 
 // AUTH
 Route::get('/auth/login', function(){
+    session(['page_login'=> url()->previous()]);
     return Socialite::driver('google')->redirect();
-});
+})->name('auth.login');
 Route::get('/auth/callback', GoogleLogin::class);
-
+Route::post('/auth/logout', function(Request $request){
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect(route('home'));
+})->name('auth.logout');
 
 // require __DIR__.'/auth.php';

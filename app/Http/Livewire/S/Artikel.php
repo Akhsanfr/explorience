@@ -8,6 +8,7 @@ class Artikel extends Component
 {
     public function render()
     {
+        session(['page_header' => '']);
         return view('livewire.s.artikel');
     }
 }
