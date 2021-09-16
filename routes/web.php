@@ -27,7 +27,7 @@ Route::get('/judul-artikel', Artikel::class)->name('artikel');
 // DASHBOARD
 Route::prefix('dashboard')->middleware(['auth','can:team'])->group(function () {
     Route::get('/', HomeDashboard::class)->name('d.home');
-    Route::get('/user', User::class)->name('d.user');
+    Route::get('/user', User::class)->name('d.user')->middleware('can:admin');
 });
 
 

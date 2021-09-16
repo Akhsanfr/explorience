@@ -20,5 +20,11 @@ class UserSeeder extends Seeder
             'email' => 'akhsan.fr@gmail.com',
             'avatar' => 'https://lh3.googleusercontent.com/a-/AOh14GgMA4LyPjGaigd6vah1AooX-072ZN61BqO6qwpi=s96-c',
         ]);
+        DB::table('users')->insert([
+            'google_id' => '112380795769928941547',
+            'nama' => '10 Fernanda Akhsanuddin Almas',
+            'email' => '4302180033.fernandaakhsanuddin@gmail.com',
+            'avatar' => 'https://lh3.googleusercontent.com/a-/AOh14Gj-1swTsmaPJo0_RRbdYhZGmXxY2uuYk3r5cuE-=s96-c',
+        ]);
     }
 }

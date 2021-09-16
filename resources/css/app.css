@@ -7,4 +7,15 @@
     .menu li a svg{
         @apply mr-2;
     }
+    .menu-custom {
+        @apply card bordered bg-base-200;
+    }
+    .menu-custom a, .menu-custom form {
+        @apply flex items-end p-4 hover:text-secondary group;
+    }
+    .menu-custom a span, .menu-custom form button {
+        @apply ml-2 group-hover:ml-4 mr-2 group-hover:mr-0 whitespace-nowrap;
+    }
+
+
 }
