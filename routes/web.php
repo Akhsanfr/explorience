@@ -4,6 +4,7 @@ use App\Http\Livewire\C\GoogleLogin;
 use App\Http\Livewire\S\Artikel;
 use App\Http\Livewire\S\Home;
 use App\Http\Livewire\D\Home as HomeDashboard;
+use App\Http\Livewire\D\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
@@ -26,6 +27,7 @@ Route::get('/judul-artikel', Artikel::class)->name('artikel');
 // DASHBOARD
 Route::prefix('dashboard')->middleware(['auth','can:team'])->group(function () {
     Route::get('/', HomeDashboard::class)->name('d.home');
+    Route::get('/user', User::class)->name('d.user');
 });
 
 

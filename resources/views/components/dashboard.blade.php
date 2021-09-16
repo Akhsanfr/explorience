@@ -7,7 +7,7 @@
                 </svg>
                 <span class="ml-2 group-hover:ml-4 transition mr-2 group-hover:mr-0 whitespace-nowrap">Home</span>
             </a>
-            <a href="#" class="flex items-end p-4 bg-base-200 hover:bg-opacity-75 hover:text-secondary group ">
+            <a href="{{ route('d.user') }}" class="flex items-end p-4 bg-base-200 hover:bg-opacity-75 hover:text-secondary group {{ session('page_sidebar') == 'user' ? 'text-secondary' : '' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                 </svg>
@@ -15,7 +15,7 @@
             </a>
         </div>
     </div>
-    <div class="">
+    <div class="flex-grow p-8 grid grid-cols-12 gap-8">
         {{ $slot }}
     </div>
 
