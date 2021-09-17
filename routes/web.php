@@ -4,6 +4,7 @@ use App\Http\Livewire\C\GoogleLogin;
 use App\Http\Livewire\S\Artikel;
 use App\Http\Livewire\S\Home;
 use App\Http\Livewire\D\Home as HomeDashboard;
+use App\Http\Livewire\D\Kategori;
 use App\Http\Livewire\D\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,7 @@ Route::get('/judul-artikel', Artikel::class)->name('artikel');
 Route::prefix('dashboard')->middleware(['auth','can:team'])->group(function () {
     Route::get('/', HomeDashboard::class)->name('d.home');
     Route::get('/user', User::class)->name('d.user')->middleware('can:admin');
+    Route::get('/kategori', Kategori::class)->name('d.kategori')->middleware('can:admin');
 });
 
 

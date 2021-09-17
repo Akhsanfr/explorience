@@ -4,8 +4,8 @@
 
 
 @layer components {
-    .menu li a svg{
-        @apply mr-2;
+    .card{
+        @apply p-4 bg-base-200;
     }
     .menu-custom {
         @apply card bordered bg-base-200;
@@ -16,6 +16,22 @@
     .menu-custom a span, .menu-custom form button {
         @apply ml-2 group-hover:ml-4 mr-2 group-hover:mr-0 whitespace-nowrap;
     }
+    /* Modal */
+    /* .modal-custom {
+        @apply fixed top-0 left-0 bg-base-300 bg-opacity-80 w-screen h-screen z-50 flex flex-col justify-center items-center;
+    }
+    .modal-custom div:only-child {
+        @apply flex flex-col space-y-4;
+    }
+    .modal-custom div div:nth-child(1):only-child {
+        @apply card bg-base-100 flex flex-row items-center space-x-2;
+    }
+    .modal-custom div div:nth-child(1) button {
+        @apply btn btn-xs btn-error;
+    }
+    .modal-custom div div:nth-child(2):only-child {
+        @apply card bg-base-100;
+    } */
 
 
 }
