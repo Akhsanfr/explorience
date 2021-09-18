@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ArtikelWriter as ControllersArtikelWriter;
 use App\Http\Livewire\C\GoogleLogin;
+use App\Http\Livewire\D\ArtikelAdmin;
+use App\Http\Livewire\D\ArtikelSupervisor;
 use App\Http\Livewire\D\ArtikelWriter;
 use App\Http\Livewire\D\ArtikelWriterCreate;
 use App\Http\Livewire\S\Artikel;
@@ -33,9 +35,11 @@ Route::prefix('dashboard')->middleware(['auth','can:team'])->group(function () {
     Route::get('/', HomeDashboard::class)->name('d.home');
     Route::get('/user', User::class)->name('d.user')->middleware('can:admin');
     Route::get('/kategori', Kategori::class)->name('d.kategori')->middleware('can:admin');
+    Route::get('/artikel-admin', ArtikelAdmin::class)->name('d.artikel.admin')->middleware('can:admin');
+    Route::get('/artikel-supervisor', ArtikelSupervisor::class)->name('d.artikel.supervisor')->middleware('can:supervisor');
     Route::get('/artikel-writer', ArtikelWriter::class)->name('d.artikel.writer')->middleware('can:writer');
     Route::get('/artikel-writer-create', ArtikelWriterCreate::class)->name('d.artikel.writer.create')->middleware('can:writer');
-    Route::post('/artikel-writer', [ControllersArtikelWriter::class, 'store'])->name('d.artikel.writer.store');
+    Route::post('/artikel-writer', [ControllersArtikelWriter::class, 'store'])->name('d.artikel.writer.store')->middleware('can:writer');
 });
 
 

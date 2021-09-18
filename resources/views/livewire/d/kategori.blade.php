@@ -2,10 +2,8 @@
     <div class="card col-span-12">
         <h1>Kategori Artikel</h1>
     </div>
-    <div>
-        <button class="btn btn-primary whitespace-nowrap" wire:click="open_modal">Tambah Kategori</button>
-    </div>
     <div class="card col-span-12">
+        <button class="btn btn-primary btn-sm w-min whitespace-nowrap" wire:click="open_modal">Tambah Kategori</button>
         <table class="table table-compact table-zebra">
             <thead>
                 <tr>

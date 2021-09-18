@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('google_id');
             $table->string('nama');
             $table->string('email')->unique();
+            $table->boolean('is_active')->default(0);
             $table->string('avatar');
             $table->timestamps();
         });

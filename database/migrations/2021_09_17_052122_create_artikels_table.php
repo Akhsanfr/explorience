@@ -21,6 +21,7 @@ class CreateArtikelsTable extends Migration
             $table->text('isi');
             $table->text('isi_en')->nullable();
             $table->foreignId('kategori_id')->constrained();
+            $table->boolean('is_active')->default(0);
 
             $table->unsignedBigInteger('user_writer_id');
             $table->foreign('user_writer_id')->references('id')->on('users');

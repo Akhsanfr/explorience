@@ -1,4 +1,4 @@
-<div  class="fixed top-0 left-0 bg-base-300 bg-opacity-80 w-screen h-screen z-50 flex flex-col justify-center items-center" x-show="$wire.{{ $data_modal }}">
+<div  class="fixed top-0 left-0 bg-base-300 bg-opacity-80 w-screen h-screen z-50 flex flex-col justify-center items-center" x-data x-show="$wire.{{ $data_modal }}">
     <div class="flex flex-col space-y-4">
         <div class="card bg-base-100 flex flex-row items-center justify-between space-x-2">
             <span>

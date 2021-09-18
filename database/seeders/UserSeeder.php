@@ -19,18 +19,27 @@ class UserSeeder extends Seeder
             'nama' => 'Fernanda Akhsanuddin',
             'email' => 'akhsan.fr@gmail.com',
             'avatar' => 'https://lh3.googleusercontent.com/a-/AOh14GgMA4LyPjGaigd6vah1AooX-072ZN61BqO6qwpi=s96-c',
+            'is_active' => 1,
         ]);
         DB::table('users')->insert([
             'google_id' => '112380795769928941547',
             'nama' => '10 Fernanda Akhsanuddin Almas',
             'email' => '4302180033.fernandaakhsanuddin@gmail.com',
             'avatar' => 'https://lh3.googleusercontent.com/a-/AOh14Gj-1swTsmaPJo0_RRbdYhZGmXxY2uuYk3r5cuE-=s96-c',
+            'is_active' => 1,
         ]);
         DB::table('users')->insert([
             'google_id' => '112380795769928941547',
             'nama' => 'Writer B',
             'email' => 'writerB@gmail.com',
             'avatar' => 'https://lh3.googleusercontent.com/a-/AOh14Gj-1swTsmaPJo0_RRbdYhZGmXxY2uuYk3r5cuE-=s96-c',
+        ]);
+        DB::table('users')->insert([
+            'google_id' => '114190809565766481938',
+            'nama' => 'NAC 2019',
+            'email' => 'nac.challenge2019@gmail.com',
+            'avatar' => 'https://lh3.googleusercontent.com/a-/AOh14Gj-1swTsmaPJo0_RRbdYhZGmXxY2uuYk3r5cuE-=s96-c',
+            'is_active' => 1,
         ]);
     }
 }

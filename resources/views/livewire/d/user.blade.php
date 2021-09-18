@@ -1,12 +1,20 @@
 <x-dashboard>
-    <div class="card w-full bg-base-200 p-4 col-span-12">Daftar User Explorience</div>
+    <div class="card w-full bg-base-200 p-4 col-span-12">
+        <h1>
+            {{ $edit_mode ? 'Tambah team Explorience' : 'Daftar Team Explorience' }}
+        </h1>
+    </div>
     <div class="card col-span-12 bg-base-200 p-4 ">
+        <button wire:click="ubah_mode" class="btn btn-sm btn-primary w-min">
+            {{ $edit_mode ? 'Kembali' :'Tambah team'}}
+        </button>
         <table class="table table-zebra table-compact">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
                     <th>Email</th>
+                    <th>Aktif</th>
                     <th>Role</th>
                 </tr>
             </thead>
@@ -16,6 +24,13 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $user->nama}}</td>
                         <td>{{ $user->email }}</td>
+                        <td>
+                            <div class="form-control">
+                                <label class="cursor-pointer label">
+                                  <input wire:click="ubah_active({{ $user->id }})" type="checkbox" {{ $user->is_active ? 'checked' : '' }} class="toggle toggle-primary">
+                                </label>
+                              </div>
+                        </td>
                         <td>
                             <button class="btn btn-sm btn-primary flex flex-row"
                                 wire:click="open_modal({{ $user->id }})"
@@ -30,7 +45,9 @@
                     </tr>
                 @empty
                     <tr>
-                        No data available !
+                        <td>
+                            No data available !
+                        </td>
                     </tr>
                 @endforelse
             </tbody>
@@ -45,7 +62,7 @@
 
         <ul class="flex flex-col space-y-4">
             @foreach ($roles->sortBy('nama') as $role)
-                <li class="flex flex-row items-center justify-between">
+                <li class="flex flex-row items-center justify-between space-x-4">
                     <span>
                         {{ $role->nama }}
                     </span>
