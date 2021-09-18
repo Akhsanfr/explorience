@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArtikelWriter as ControllersArtikelWriter;
 use App\Http\Livewire\C\GoogleLogin;
+use App\Http\Livewire\D\ArtikelWriter;
+use App\Http\Livewire\D\ArtikelWriterCreate;
 use App\Http\Livewire\S\Artikel;
 use App\Http\Livewire\S\Home;
 use App\Http\Livewire\D\Home as HomeDashboard;
@@ -23,13 +26,16 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', Home::class)->name('home');
-Route::get('/judul-artikel', Artikel::class)->name('artikel');
+
 
 // DASHBOARD
 Route::prefix('dashboard')->middleware(['auth','can:team'])->group(function () {
     Route::get('/', HomeDashboard::class)->name('d.home');
     Route::get('/user', User::class)->name('d.user')->middleware('can:admin');
     Route::get('/kategori', Kategori::class)->name('d.kategori')->middleware('can:admin');
+    Route::get('/artikel-writer', ArtikelWriter::class)->name('d.artikel.writer')->middleware('can:writer');
+    Route::get('/artikel-writer-create', ArtikelWriterCreate::class)->name('d.artikel.writer.create')->middleware('can:writer');
+    Route::post('/artikel-writer', [ControllersArtikelWriter::class, 'store'])->name('d.artikel.writer.store');
 });
 
 
@@ -45,5 +51,9 @@ Route::post('/auth/logout', function(Request $request){
     $request->session()->regenerateToken();
     return redirect(route('home'));
 })->name('auth.logout');
+
+
+// ARTIKEL
+Route::get('/{slug}', Artikel::class)->name('artikel');
 
 // require __DIR__.'/auth.php';

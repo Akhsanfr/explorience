@@ -15,10 +15,16 @@ class KategoriSeeder extends Seeder
     public function run()
     {
         DB::table('kategoris')->insert([
-            'nama' => 'matematika',
+            'nama' => 'Matematika',
             'nama_en' => 'Math',
-            'desc' => 'Matematika adalah ilmu yang paling banyak mendorong perusakan hutan',
+            'desc' => 'Disiplin ilmu yang paling banyak mendorong perusakan hutan',
             'desc_en' => 'Math is bla bla bla'
+        ]);
+        DB::table('kategoris')->insert([
+            'nama' => 'Fisika',
+            'nama_en' => 'Physics',
+            'desc' => 'Disiplin ilmu yang penuh misteri rahasia',
+            'desc_en' => 'physics is bla bla bla'
         ]);
     }
 }

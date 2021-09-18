@@ -6,7 +6,7 @@
         <li><a href="{{ route('home') }}" class="{{ session('page_header')=='home' ? 'text-secondary font-bold' : '' }}">Home</a></li>
         <li><a href="#">New Release</a></li>
         <li><a href="#">Series</a></li>
-        <li><a href="{{ route('artikel') }}">For You</a></li>
+        <li><a href="#">For You</a></li>
         <li><a href="#">About Us</a></li>
         @can('team')
             <li><a href="{{ route('d.home') }}" class="{{ session('page_header')=='dashboard' ? 'text-secondary font-bold' : '' }}">Dashboard</a></li>

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Artikel;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
@@ -31,6 +32,12 @@ class AuthServiceProvider extends ServiceProvider
         });
         Gate::define('admin', function(User $user){
             return $user->role('admin');
+        });
+        Gate::define('writer', function(User $user){
+            return $user->role('writer');
+        });
+        Gate::define('creator', function( User $user, $slug){
+            return Artikel::where('slug', $slug)->first()->user_writer_id == $user->id;
         });
     }
 }
