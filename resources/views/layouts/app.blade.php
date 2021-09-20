@@ -22,7 +22,23 @@
 
         @livewireStyles
     </head>
-    <body class="font-sans antialiased bg-base-100 leading-4">
+    <body class="font-sans antialiased bg-base-100 leading-4" x-data="{ imgShow : false , imgSrc : '', imgTitle : '' }">
+        {{-- Show Image --}}
+        <div class="fixed top-0 left-0 bg-base-300 bg-opacity-80 w-screen h-screen z-50 flex flex-col justify-center items-center" x-show="imgShow">
+            <div class="flex flex-col space-y-4">
+                <div class="card bg-base-100 flex flex-row items-center justify-between space-x-2">
+                    <span x-text="imgTitle"></span>
+                    <button @click="imgShow = false" class="btn btn-xs btn-error">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="card bg-base-100">
+                    <img :src="imgSrc" alt="" class="max-h-4/5-screen">
+                </div>
+            </div>
+        </div>
         <livewire:c.header >
             <!-- Page Content -->
         <main>

@@ -19,6 +19,7 @@ class CreateKategorisTable extends Migration
             $table->string('nama_en');
             $table->string('desc');
             $table->string('desc_en');
+            $table->string('thumbnail');
             $table->timestamps();
         });
     }

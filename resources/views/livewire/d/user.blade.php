@@ -45,7 +45,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td>
+                        <td colspan="5">
                             No data available !
                         </td>
                     </tr>
