@@ -36,4 +36,13 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    // Kategori writer
+    public function kategoris(){
+        return $this->belongsToMany(Kategori::class)->withPivot('is_active');
+    }
+
+    public function kategoris_aktif(){
+        return $this->belongsToMany(Kategori::class)->wherePivot('is_active', 1);
+    }
 }

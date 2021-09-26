@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArtikelWriter as ControllersArtikelWriter;
 use App\Http\Livewire\C\GoogleLogin;
+use App\Http\Livewire\D\Admin\Writer;
 use App\Http\Livewire\D\ArtikelAdmin;
 use App\Http\Livewire\D\ArtikelSupervisor;
 use App\Http\Livewire\D\ArtikelWriter;
@@ -40,6 +41,11 @@ Route::prefix('dashboard')->middleware(['auth','can:team'])->group(function () {
     Route::get('/artikel-writer', ArtikelWriter::class)->name('d.artikel.writer')->middleware('can:writer');
     Route::get('/artikel-writer-create', ArtikelWriterCreate::class)->name('d.artikel.writer.create')->middleware('can:writer');
     Route::post('/artikel-writer', [ControllersArtikelWriter::class, 'store'])->name('d.artikel.writer.store')->middleware('can:writer');
+
+
+    Route::prefix('admin')->middleware('can:admin')->group(function (){
+        Route::get('writer', Writer::class)->name('d.admin.writer');
+    });
 });
 
 
