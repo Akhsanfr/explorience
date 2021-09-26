@@ -7,7 +7,7 @@
     </div>
 
     <div class="card col-span-12">
-        <form action="{{ route('d.artikel.writer.store') }}" method="POST">
+        <form action="{{ route('d.writer.artikel.store') }}" method="POST">
             @csrf
             <input type="hidden" value="{{ $artikel->id ?? null }}" name="edit_id">
             <div class="form-control">

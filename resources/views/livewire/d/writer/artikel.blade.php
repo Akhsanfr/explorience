@@ -3,7 +3,7 @@
         <h1>Artikel</h1>
     </div>
     <div class="col-span-12 card">
-        <a href="{{ route('d.artikel.writer.create') }}" class="btn btn-primary btn-sm">Tulis artikel baru</a>
+        <a href="{{ route('d.writer.artikel.create') }}" class="btn btn-primary btn-sm w-min whitespace-nowrap">Tulis artikel baru</a>
         <table class="table table-compact table-zebra">
             <thead>
                 <tr>

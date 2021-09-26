@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\D;
+namespace App\Http\Livewire\D\Admin;
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Kategori as ModelsKategori;
@@ -76,6 +76,6 @@ class Kategori extends Component
         $this->kategoris = ModelsKategori::all();
         session(['page_header' => 'dashboard']);
         session(['page_sidebar' => 'kategori']);
-        return view('livewire.d.kategori');
+        return view('livewire.d.admin.kategori');
     }
 }

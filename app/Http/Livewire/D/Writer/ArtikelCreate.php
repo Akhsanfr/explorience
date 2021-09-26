@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\D;
+namespace App\Http\Livewire\D\Writer;
 
 use App\Models\Artikel;
 use App\Models\Kategori;
 use Livewire\Component;
 
-class ArtikelWriterCreate extends Component
+class ArtikelCreate extends Component
 {
     public $kategoris, $artikel;
 
@@ -24,6 +24,6 @@ class ArtikelWriterCreate extends Component
 
         session(['page_header' => 'dashboard']);
         session(['page_sidebar' => 'artikel']);
-        return view('livewire.d.artikel-writer-create');
+        return view('livewire.d.writer.artikel-create');
     }
 }

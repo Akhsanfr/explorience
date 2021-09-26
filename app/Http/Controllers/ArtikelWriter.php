@@ -28,6 +28,6 @@ class ArtikelWriter extends Controller
         $artikel->isi = $request->isi;
         $artikel->user_writer_id = Auth::id();
         $artikel->save();
-        return redirect(route('d.artikel.writer'));
+        return redirect(route('d.writer.artikel'));
     }
 }

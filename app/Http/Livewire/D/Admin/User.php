@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\D;
+namespace App\Http\Livewire\D\Admin;
 
 use App\Models\Role;
 use App\Models\User as ModelsUser;
@@ -66,6 +66,6 @@ class User extends Component
     {
         session(['page_header' => 'dashboard']);
         session(['page_sidebar' => 'user']);
-        return view('livewire.d.user');
+        return view('livewire.d.admin.user');
     }
 }
