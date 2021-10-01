@@ -12,7 +12,7 @@ class Artikel extends Component
 
     public function edit($id){
         session(['artikel_id' => $id]);
-        return redirect(route('d.artikel.writer.create'));
+        return redirect(route('d.writer.artikel.create'));
     }
 
     public function render()
