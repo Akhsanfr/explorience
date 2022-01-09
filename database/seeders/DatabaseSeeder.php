@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             RoleUserSeeder::class,
             KategoriSeeder::class,
-            ArtikelSeeder::class
+            ArtikelSeeder::class,
+            KomentarSeeder::class
         ]);
     }
 }

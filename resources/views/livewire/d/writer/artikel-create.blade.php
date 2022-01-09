@@ -1,7 +1,24 @@
+@push('script')
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+        <script>
+
+            $(document).ready(function() {
+                $('#summernote').summernote(
+                    {
+                        toolbar: [
+                            ['style', ['bold', 'italic', 'underline', 'clear']],
+                            ['font', ['fontsize']]
+                        ]
+                    }
+                );
+            });
+        </script>
+@endpush
+
 <x-dashboard>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <div class="col-span-12 card">
         <h1>{{ $artikel ? "Edit artikel berjudul $artikel->judul" : 'Buat artikel baru'}}</h1>
     </div>
@@ -48,11 +65,5 @@
             </div>
         </form>
     </div>
-    <script>
-
-        $(document).ready(function() {
-            $('#summernote').summernote();
-        });
-      </script>
 
 </x-dashboard>

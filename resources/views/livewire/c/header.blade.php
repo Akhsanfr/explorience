@@ -4,9 +4,9 @@
     </a>
     <ul class="flex flex-row justify-center items-center space-x-4">
         <li><a href="{{ route('home') }}" class="{{ session('page_header')=='home' ? 'text-secondary font-bold' : '' }}">Home</a></li>
-        <li><a href="#">New Release</a></li>
-        <li><a href="#">Series</a></li>
-        <li><a href="#">For You</a></li>
+        <li><a href="{{ route('explorience-dishes') }}" class="{{ session('page_header')=='explorience-dishes' ? 'text-secondary font-bold' : '' }}">Explorience Dishes</a></li>
+        <li><a href="{{ route('explore') }}" class="{{ session('page_header')=='explore' ? 'text-secondary font-bold' : '' }}">Explore</a></li>
+        <li><a href="#">Information</a></li>
         <li><a href="#">About Us</a></li>
         @can('team')
             <li><a href="{{ route('d.home') }}" class="{{ session('page_header')=='dashboard' ? 'text-secondary font-bold' : '' }}">Dashboard</a></li>

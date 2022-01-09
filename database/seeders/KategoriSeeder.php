@@ -14,19 +14,34 @@ class KategoriSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('kategoris')->insert([
-            'nama' => 'Matematika',
-            'nama_en' => 'Math',
-            'desc' => 'Disiplin ilmu yang paling banyak mendorong perusakan hutan',
-            'desc_en' => 'Math is bla bla bla',
-            'thumbnail' => '',
-        ]);
-        DB::table('kategoris')->insert([
-            'nama' => 'Fisika',
-            'nama_en' => 'Physics',
-            'desc' => 'Disiplin ilmu yang penuh misteri rahasia',
-            'desc_en' => 'physics is bla bla bla',
-            'thumbnail' => '',
-        ]);
+
+        $kategories =   [
+                            'Akuntansi',
+                            'Aset Negara',
+                            'Hukum',
+                            'Fisika',
+                            'B. Inggris',
+                            'Psikologi',
+                            'Kesehatan',
+                            'Hukum',
+                            'Manajemen',
+                            'Statistika',
+                            'Geografi',
+                            'Sosiologi',
+                            'Trivia',
+                            'Indonesiaku',
+                        'Lentera Islami'];
+
+        foreach( $kategories as $key => $kategori ){
+
+            DB::table('kategoris')->insert([
+                'nama' => "$kategori",
+                'nama_en' => "En Version of $kategori",
+                'desc' => "Desc nya $kategori",
+                'desc_en' => "Desc En nya $kategori",
+                'thumbnail' => ($key + 1).".png",
+            ]);
+
+        }
     }
 }

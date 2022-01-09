@@ -17,8 +17,8 @@
         <link rel="icon" href="{{ asset('img/logo.png') }}">
 
         <!-- Scripts -->
-        {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
         @livewireStyles
     </head>
@@ -46,6 +46,7 @@
         </main>
         <livewire:c.footer>
         @livewireScripts
+        @stack('script')
         <script>
             function tema(){
                 return {

@@ -12,6 +12,11 @@ use App\Http\Livewire\S\Artikel;
 use App\Http\Livewire\S\Home;
 use App\Http\Livewire\D\Home as HomeDashboard;
 use App\Http\Livewire\D\Admin\User;
+use App\Http\Livewire\S\DaftarArtikel;
+use App\Http\Livewire\S\Explore;
+use App\Http\Livewire\S\ExplorienceDishes;
+use App\Http\Livewire\S\NewRelease;
+use App\Http\Livewire\S\Trending;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
@@ -29,6 +34,13 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', Home::class)->name('home');
+Route::get('/explorience-dishes', ExplorienceDishes::class)->name('explorience-dishes');
+Route::get('/explore', Explore::class)->name('explore');
+
+Route::get('/explore/{nama}', DaftarArtikel::class)->name('exploreByKategori');
+Route::get('trending', Trending::class)->name('trending');
+Route::get('new-release', NewRelease::class)->name('new-release');
+
 
 
 // DASHBOARD
@@ -67,7 +79,11 @@ Route::post('/auth/logout', function(Request $request){
 })->name('auth.logout');
 
 
+Route::get('/tes', function(){
+    return view('tes');
+});
 // ARTIKEL
 Route::get('/{slug}', Artikel::class)->name('artikel');
 
 // require __DIR__.'/auth.php';
+

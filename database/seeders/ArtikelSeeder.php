@@ -14,6 +14,49 @@ class ArtikelSeeder extends Seeder
      */
     public function run()
     {
+
+        // [writer, kategori]
+        $artikels = [
+            [2, 13],
+            [2, 13],
+            [2, 13],
+            [2, 13],
+            [2, 13],
+            [2, 13],
+            [2, 13],
+            [2, 13],
+            [2, 14],
+            [2, 14],
+            [2, 14],
+            [2, 14],
+            [2, 14],
+            [2, 14],
+            [2, 14],
+            [2, 14],
+            [2, 15],
+            [2, 15],
+            [2, 15],
+            [2, 15],
+            [2, 15],
+            [2, 15],
+            [2, 15],
+            [2, 15],
+        ];
+
+        foreach( $artikels as $key => $val ){
+
+            DB::table('artikels')->insert([
+                "slug" => "ini-judul-artikel-$key",
+                "judul" => "Ini Judul - Artikel $key",
+                "judul_en" => "Ini judul - En Artikel $key",
+                "isi" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet.",
+                "isi_en" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en ",
+                "user_writer_id" => $val[0],
+                "kategori_id" => $val[1]
+            ]);
+
+        }
+
         DB::table('artikels')->insert([
             'slug' => 'ini-judul-user-a',
             'judul' => 'Ini Judul - User A',

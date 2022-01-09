@@ -16,7 +16,16 @@ class Artikel extends Model
     public function writer(){
         return $this->belongsTo(User::class, 'user_writer_id');
     }
+
     public function supervisor(){
         return $this->belongsTo(User::class, 'user_supervisor_id');
+    }
+
+    public function likes(){
+        return $this->belongsToMany(User::class);
+    }
+
+    public function komentars(){
+        return $this->hasMany(Komentar::class);
     }
 }
