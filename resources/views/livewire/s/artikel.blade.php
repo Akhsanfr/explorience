@@ -176,7 +176,7 @@
                     <button wire:click="verif" class="btn btn-primary btn-xs">{{ $artikel->is_active ? 'Unverifikasi' : 'Verifikasi' }}</button>
                 </div>
                 <div class="mt-4">
-                    <a href="{{ route('d.artikel.supervisor') }}" class="btn btn-secondary btn-xs">Daftar Artikel</a>
+                    <a href="{{ route('d.supervisor.artikel') }}" class="btn btn-secondary btn-xs">Daftar Artikel</a>
                 </div>
             @endcan
         </div>
