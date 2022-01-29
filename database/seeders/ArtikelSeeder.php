@@ -49,46 +49,48 @@ class ArtikelSeeder extends Seeder
                 "slug" => "ini-judul-artikel-$key",
                 "judul" => "Ini Judul - Artikel $key",
                 "judul_en" => "Ini judul - En Artikel $key",
-                "isi" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet.",
-                "isi_en" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en ",
+                "isi" => "<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet.</p>",
+                "isi_en" => "<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en </p>",
                 "user_writer_id" => $val[0],
-                "kategori_id" => $val[1]
+                "kategori_id" => $val[1],
+                "status_aktivasi" => round(rand(0,1)) ? "aktif" : ( round(rand(0,1)) ? "ditolak" : "tidak aktif")
             ]);
 
         }
 
-        DB::table('artikels')->insert([
-            'slug' => 'ini-judul-user-a',
-            'judul' => 'Ini Judul - User A',
-            'judul_en' => 'Ini judul - En',
-            'isi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet.',
-            'isi_en' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en ',
-            'user_writer_id' => 2,
-            'kategori_id' => 1
-        ]);
-        DB::table('artikels')->insert([
-            'slug' => 'ini-judul-2-user-a',
-            'judul' => 'Ini Judul 2 - User A',
-            'judul_en' => 'Ini judul 2 - En',
-            'isi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet.',
-            'isi_en' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en ',
-            'user_writer_id' => 2,
-            'kategori_id' => 1
-        ]);
+        // DB::table('artikels')->insert([
+        //     'slug' => 'ini-judul-user-a',
+        //     'judul' => 'Ini Judul - User A',
+        //     'judul_en' => 'Ini judul - En',
+        //     'isi' => '<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. </p>',
+        //     'isi_en' => '<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en </p>',
+        //     'user_writer_id' => 2,
+        //     'kategori_id' => 1
+        // ]);
+        // DB::table('artikels')->insert([
+        //     'slug' => 'ini-judul-2-user-a',
+        //     'judul' => 'Ini Judul 2 - User A',
+        //     'judul_en' => 'Ini judul 2 - En',
+        //     'isi' => '<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. </p>',
+        //     'isi_en' => '<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en </p>',
+        //     'user_writer_id' => 2,
+        //     'kategori_id' => 1
+        // ]);
+        // DB::table('artikels')->insert([
+        //     'slug' => 'ini-judul-user-b',
+        //     'judul' => 'Ini Judul - User B',
+        //     'judul_en' => 'Ini judul - En',
+        //     'isi' => '<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. </p>',
+        //     'isi_en' => '<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en </p>',
+        //     'user_writer_id' => 3,
+        //     'kategori_id' => 1
+        // ]);
         DB::table('artikels')->insert([
             'slug' => 'ini-judul-user-b',
             'judul' => 'Ini Judul - User B',
             'judul_en' => 'Ini judul - En',
-            'isi' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet.',
-            'isi_en' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en ',
-            'user_writer_id' => 3,
-            'kategori_id' => 1
-        ]);
-        DB::table('artikels')->insert([
-            'slug' => 'ini-judul-user-b',
-            'judul' => 'Ini Judul - User B',
-            'judul_en' => 'Ini judul - En',
-            'isi' => '<p data-adtags-visited="true">Ilmu pengetahuan sangat penting bagi
+            "status_aktivasi" => "ditolak",
+            'isi' => '<p><p data-adtags-visited="true">Ilmu pengetahuan sangat penting ba </p>gi
             kehidupan bak untuk manusia, lingkungan ataupun makhluk hidup &nbsp;lainnya
             di alam semesta ini. Ilmu pengetahuan terus berkembang mengikuti pola
             pikir manusia yang dituntut untuk terus maju sesuai dengan kondisi
@@ -186,10 +188,9 @@ class ArtikelSeeder extends Seeder
             membuat mereka tahu apa yang sebenarnya ada dan terjadi di alam ini,
             mereka akan terus berusaha tahu dan menemukan cara untuk mengembangkan
             pola pikirnya dari konsep fisika kedalam kehidupan nyata.</p>',
-            'isi_en' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en ',
+            'isi_en' => '<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en </p>',
             'user_writer_id' => 3,
             'kategori_id' => 1
-
         ]);
     }
 }

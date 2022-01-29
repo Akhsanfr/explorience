@@ -166,17 +166,16 @@
                     <path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" />
                 </svg>
             </div>
-            @can('creator', $artikel->slug)
-                <div class="mt-8">
-                    <button wire:click="edit({{ $artikel->id }})" class="btn btn-primary btn-xs">Edit artikel ini</button>
-                </div>
-            @endcan
-            @can('supervisor', $artikel->slug)
-                <div class="mt-8">
-                    <button wire:click="verif" class="btn btn-primary btn-xs">{{ $artikel->is_active ? 'Unverifikasi' : 'Verifikasi' }}</button>
-                </div>
-                <div class="mt-4">
-                    <a href="{{ route('d.supervisor.artikel') }}" class="btn btn-secondary btn-xs">Daftar Artikel</a>
+            @can('team')
+                <div class="flex flex-col space-y-2 mt-2">
+                    {!! $artikel->status_aktivasi === "aktif" ? "<span class='badge badge-success'>Aktif</span>" : ($artikel->status_aktivasi === "tidak aktif" ? "<span class='badge badge-warning'>Tidak aktif</span>": "<span class='badge badge-error'>Ditolak</span>") !!}
+                    <a href="{{ route('d.artikel') }}" class="btn btn-primary btn-xs">Daftar Artikel</a>
+                    @can('creator', $artikel->slug)
+                        <a href="{{ route('d.writer.artikel.editor', ["id" => $artikel->id]) }}" class="btn btn-primary btn-xs">Edit artikel ini</a>
+                    @endcan
+                    @can('supervisor', $artikel->slug)
+                        <button wire:click="verif" class="btn btn-primary btn-xs">{{ $artikel->is_active ? 'Unverifikasi' : 'Verifikasi' }}</button>
+                    @endcan
                 </div>
             @endcan
         </div>

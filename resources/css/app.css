@@ -1,19 +1,20 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer components {
-    .card{
+    .card {
         @apply p-4 bg-base-200;
     }
     .menu-custom {
         @apply card bordered bg-base-200;
     }
-    .menu-custom a, .menu-custom form {
-        @apply flex items-end p-4 hover:text-secondary group;
+    .menu-custom a,
+    .menu-custom form {
+        @apply flex items-end p-4 hover:text-secondary;
     }
-    .menu-custom a span, .menu-custom form button {
+    .menu-custom a span,
+    .menu-custom form button {
         @apply ml-2 group-hover:ml-4 mr-2 group-hover:mr-0 whitespace-nowrap;
     }
     /* Modal */
@@ -32,6 +33,4 @@
     .modal-custom div div:nth-child(2):only-child {
         @apply card bg-base-100;
     } */
-
-
 }

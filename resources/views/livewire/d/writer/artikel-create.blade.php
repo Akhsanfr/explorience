@@ -1,20 +1,16 @@
+@push('styles')
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+@endpush
 @push('script')
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
         <script>
-
-            $(document).ready(function() {
-                $('#summernote').summernote(
-                    {
-                        toolbar: [
-                            ['style', ['bold', 'italic', 'underline', 'clear']],
-                            ['font', ['fontsize']]
-                        ]
-                    }
-                );
+            var quill = new Quill('#editor', {
+                theme: 'snow'
             });
+            quill.on('text-change', function(){
+                const editorValue = document.querySelector('#editor .ql-editor').innerHTML;
+                document.getElementById('target').value = editorValue
+            })
         </script>
 @endpush
 
@@ -54,7 +50,8 @@
                 <label class="label">
                 <span class="label-text">Isi</span>
                 </label>
-                <textarea id="summernote" name="isi" >{{ old('isi') ?? $artikel->isi ??'' }}</textarea>
+                <div id="editor">{!! old('isi') ?? $artikel->isi ??'' !!}</div>
+                <textarea id="target" name="isi" class="hidden">{{ old('isi') ?? $artikel->isi ??'' }}</textarea>
             </div>
             @error('isi')
                 <small class="text-error">{{ $message }}</small>

@@ -21,12 +21,13 @@ class CreateArtikelsTable extends Migration
             $table->text('isi');
             $table->text('isi_en')->nullable();
             $table->foreignId('kategori_id')->constrained();
+            $table->enum('status_aktivasi', ['aktif', 'tidak aktif', 'ditolak']);
+            $table->timestamps();
 
             $table->unsignedBigInteger('user_writer_id');
             $table->foreign('user_writer_id')->references('id')->on('users');
             $table->unsignedBigInteger('user_supervisor_id')->nullable();
             $table->foreign('user_supervisor_id')->references('id')->on('users');
-            $table->timestamps();
         });
     }
 

@@ -3,13 +3,12 @@
         <img src="{{ asset('img/logo.png') }}" alt="">
     </a>
     <ul class="flex flex-row justify-center items-center space-x-4">
-        <li><a href="{{ route('home') }}" class="{{ session('page_header')=='home' ? 'text-secondary font-bold' : '' }}">Home</a></li>
-        <li><a href="{{ route('explorience-dishes') }}" class="{{ session('page_header')=='explorience-dishes' ? 'text-secondary font-bold' : '' }}">Explorience Dishes</a></li>
-        <li><a href="{{ route('explore') }}" class="{{ session('page_header')=='explore' ? 'text-secondary font-bold' : '' }}">Explore</a></li>
-        <li><a href="#">Information</a></li>
-        <li><a href="#">About Us</a></li>
+        <li><a href="{{ route('home') }}" class="{{ session('page_header')=='home' ? 'text-secondary font-bold' : '' }}">HOME</a></li>
+        <li><a href="{{ route('explore') }}" class="{{ session('page_header')=='explore' ? 'text-secondary font-bold' : '' }}">EXPLORE</a></li>
+        <li><a href="#">INFORMATION</a></li>
+        <li><a href="#">ABOUT US</a></li>
         @can('team')
-            <li><a href="{{ route('d.home') }}" class="{{ session('page_header')=='dashboard' ? 'text-secondary font-bold' : '' }}">Dashboard</a></li>
+            <li><a href="{{ route('d.home') }}" class="{{ session('page_header')=='dashboard' ? 'text-secondary font-bold' : '' }}">DASHBOARD</a></li>
         @endcan
     </ul>
     <div class="form-control flex flex-row items-center space-x-4">

@@ -27,7 +27,6 @@ class GoogleLogin extends Component
             $user_baru->email = $user->getEmail();
             $user_baru->avatar = $user->getAvatar();
             $user_baru->save();
-            $user_baru->roles()->attach(5);
             Auth::login($user_baru);
         }
         return redirect(session('page_login'));

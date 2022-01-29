@@ -28,5 +28,6 @@
             </tbody>
 
         </table>
+        {{ $artikels->links() }}
     </div>
 </x-dashboard>

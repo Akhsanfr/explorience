@@ -11,19 +11,19 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.2.1",
+    "@tailwindcss/typography": "^0.5.0",
     "alpinejs": "^3.7.0",
     "autoprefixer": "^10.1.0",
     "axios": "^0.21",
     "laravel-mix": "^6.0.6",
     "lodash": "^4.17.19",
     "postcss": "^8.2.1",
-    "postcss-import": "^12.0.1",
-    "tailwindcss": "^2.0.2"
+    "postcss-import": "^12.0.1"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.4.1",
     "daisyui": "^1.14.0",
-    "sweetalert2": "^11.3.0"
+    "sweetalert2": "^11.3.0",
+    "tailwindcss": "^3.0.17"
   },
   "name": "explorience",
   "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\"></a></p>",

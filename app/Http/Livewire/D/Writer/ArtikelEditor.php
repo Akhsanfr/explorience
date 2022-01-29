@@ -6,18 +6,16 @@ use App\Models\Artikel;
 use App\Models\Kategori;
 use Livewire\Component;
 
-class ArtikelCreate extends Component
+class ArtikelEditor extends Component
 {
     public $kategoris, $artikel;
 
-    public function mount(){
-        // ambil id artikel yang akan d edit, jika ada
-        if(session('artikel_id')){
-            $this->artikel = Artikel::find(session('artikel_id'));
-            session()->forget('artikel_id');
+    public function mount($id){
+        if($id !== "new"){
+            $this->artikel = Artikel::find($id);
         } ;
         $this->kategoris = Kategori::all();
-    }
+    } 
 
     public function render()
     {

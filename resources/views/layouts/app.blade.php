@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        @stack('styles')
 
         {{-- Icon Title --}}
         <link rel="icon" href="{{ asset('img/logo.png') }}">

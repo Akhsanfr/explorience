@@ -1,17 +1,22 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-    purge: {
-        enabled: true,
-        content: [
-            "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
-            "./storage/framework/views/*.php",
-            "./resources/views/**/*.blade.php",
-        ],
-        options: {
-            safelist: [/data-theme$/],
-        },
-    },
+    // purge: {
+    //     enabled: true,
+    //     content: [
+    //         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+    //         "./storage/framework/views/*.php",
+    //         "./resources/views/**/*.blade.php",
+    //     ],
+    //     options: {
+    //         safelist: [/data-theme$/],
+    //     },
+    // },
+    content: [
+        "./resources/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
+    ],
 
     theme: {
         extend: {
@@ -40,13 +45,13 @@ module.exports = {
                 light: {
                     primary: "#604087",
                     "primary-focus": "#533875",
-                    "primary-content": "#ffffff",
+                    "primary-content": "#000000",
                     secondary: "#ffd500",
                     "secondary-focus": "#ffbf00",
-                    "secondary-content": "#ffffff",
+                    "secondary-content": "#000000",
                     neutral: "#291334",
                     "neutral-focus": "#200f29",
-                    "neutral-content": "#ffffff",
+                    "neutral-content": "#000000",
                     "base-100": "#faf7f5",
                     "base-200": "#efeae6",
                     "base-300": "#e7e2df",
