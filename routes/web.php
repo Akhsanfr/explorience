@@ -75,8 +75,8 @@ Route::post('/auth/logout', function(Request $request){
     return redirect(route('home'));
 })->name('auth.logout');
 
-
 Route::get('/tes', function(){
+    dd(public_path(''));
     return view('tes');
 });
 Route::get('art', function(){
