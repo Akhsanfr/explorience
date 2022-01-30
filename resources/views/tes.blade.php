@@ -12,8 +12,10 @@
 <body>
     <script>
         async function getData(){
-            res = fetch('{{ url('api/tes') }}')
-            res.then(e => console.log(e.json()));
+            res = await fetch('{{ url('api/tes') }}')
+            res = await res.json()
+            console.log(res)
+            // res.then(e => console.log(e.json()));
             // console.log(res)
         }
         getData()

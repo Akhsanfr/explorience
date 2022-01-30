@@ -67,7 +67,7 @@ return [
     */
 
     'links' => [
-        public_path('kategori') => storage_path('app/kategori'),
+        public_path('img/artikel') => storage_path('app/artikel'),
     ],
 
 ];

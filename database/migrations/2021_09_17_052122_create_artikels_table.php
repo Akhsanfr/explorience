@@ -18,10 +18,11 @@ class CreateArtikelsTable extends Migration
             $table->string('slug');
             $table->string('judul');
             $table->string('judul_en')->nullable();
+            $table->string('gambar');
             $table->text('isi');
             $table->text('isi_en')->nullable();
             $table->foreignId('kategori_id')->constrained();
-            $table->enum('status_aktivasi', ['aktif', 'tidak aktif', 'ditolak']);
+            $table->enum('status_aktivasi', ['aktif', 'tidak aktif', 'ditolak'])->default('tidak aktif');
             $table->timestamps();
 
             $table->unsignedBigInteger('user_writer_id');

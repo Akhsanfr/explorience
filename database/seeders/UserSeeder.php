@@ -41,5 +41,12 @@ class UserSeeder extends Seeder
             'avatar' => 'https://lh3.googleusercontent.com/a-/AOh14Gj-1swTsmaPJo0_RRbdYhZGmXxY2uuYk3r5cuE-=s96-c',
             'is_active' => 1,
         ]);
+        DB::table('users')->insert([
+            'google_id' => '106478457771716545077',
+            'nama' => 'manset 54',
+            'email' => 'manset504@gmail.com',
+            'avatar' => 'https://lh3.googleusercontent.com/a-/AOh14GjUZH9q-ehhWU0oy_V9NhSUCOgWXg9L8JWTQi7v=s96-c',
+            'is_active' => 1,
+        ]);
     }
 }

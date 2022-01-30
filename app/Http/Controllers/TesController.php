@@ -9,7 +9,8 @@ class TesController extends Controller
 {
 
     public function index(){
-        $user = Auth::id();
+        $user = Auth::user();
+        // dd($user);
         return response()->json([
             'user' => $user
         ]);

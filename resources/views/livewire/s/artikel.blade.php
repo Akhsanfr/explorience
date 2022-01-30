@@ -198,7 +198,7 @@
             </div>
         </div>
         <article class="prose text-base-content mt-8">
-            <img src="https://picsum.photos/seed/picsum/300/200" alt="" class="">
+            <img src="{{ asset("img/".$artikel->gambar) }}" alt="" class="">
             {!! $artikel->isi !!}
         </article>
         <div class="form-control mt-8">

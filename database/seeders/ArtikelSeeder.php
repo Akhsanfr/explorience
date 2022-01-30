@@ -49,6 +49,7 @@ class ArtikelSeeder extends Seeder
                 "slug" => "ini-judul-artikel-$key",
                 "judul" => "Ini Judul - Artikel $key",
                 "judul_en" => "Ini judul - En Artikel $key",
+                "gambar" => "artikel/sample.png",
                 "isi" => "<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet.</p>",
                 "isi_en" => "<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en </p>",
                 "user_writer_id" => $val[0],
@@ -89,6 +90,7 @@ class ArtikelSeeder extends Seeder
             'slug' => 'ini-judul-user-b',
             'judul' => 'Ini Judul - User B',
             'judul_en' => 'Ini judul - En',
+            "gambar" => "artikel/sample.png",
             "status_aktivasi" => "ditolak",
             'isi' => '<p><p data-adtags-visited="true">Ilmu pengetahuan sangat penting ba </p>gi
             kehidupan bak untuk manusia, lingkungan ataupun makhluk hidup &nbsp;lainnya

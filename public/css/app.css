@@ -789,6 +789,36 @@ html {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+.dropdown>:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.dropdown .dropdown-content {
+  opacity: 0;
+  position: absolute;
+  visibility: hidden;
+  z-index: 50;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  transform-origin: top;
+  transition-property: background-color,border-color,color,fill,stroke,opacity,box-shadow,transform;
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+}
+.dropdown.dropdown-hover:hover .dropdown-content,.dropdown.dropdown-open .dropdown-content,.dropdown:not(.dropdown-hover):focus-within .dropdown-content,.dropdown:not(.dropdown-hover):focus .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+}
 .footer {
   display: grid;
   place-items: start;
@@ -1459,6 +1489,10 @@ html {
 .drawer-toggle:focus-visible~.drawer-content .drawer-button.btn-ghost {
   box-shadow: 0 0 0 2px currentColor;
 }
+.dropdown.dropdown-hover:hover .dropdown-content,.dropdown.dropdown-open .dropdown-content,.dropdown:focus-within .dropdown-content,.dropdown:focus .dropdown-content {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+}
 .label-text {
   font-size: .875rem;
   line-height: 1.25rem;
@@ -1905,6 +1939,12 @@ html {
   line-height: 2rem;
   padding-left: .75rem;
   padding-right: .75rem;
+}
+.alert-error {
+  --tw-bg-opacity: 0.1;
+  background-color: hsla(var(--er)/var(--tw-bg-opacity,1));
+  --tw-text-opacity: 1;
+  color: hsla(var(--er)/var(--tw-text-opacity,1));
 }
 .avatar.online:before {
   content: "";
@@ -2458,6 +2498,10 @@ html {
   margin-left: auto;
   margin-right: auto;
 }
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -2509,6 +2553,9 @@ html {
 .block {
   display: block;
 }
+.inline {
+  display: inline;
+}
 .flex {
   display: flex;
 }
@@ -2557,6 +2604,9 @@ html {
 .h-80 {
   height: 20rem;
 }
+.h-6 {
+  height: 1.5rem;
+}
 .max-h-4\/5-screen {
   max-height: 80vh;
 }
@@ -2597,6 +2647,9 @@ html {
 }
 .w-96 {
   width: 24rem;
+}
+.w-6 {
+  width: 1.5rem;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -2757,6 +2810,9 @@ html {
 }
 .fill-current {
   fill: currentColor;
+}
+.stroke-current {
+  stroke: currentColor;
 }
 .object-cover {
   -o-object-fit: cover;

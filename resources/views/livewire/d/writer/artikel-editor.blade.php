@@ -10,6 +10,15 @@
             quill.on('text-change', function(){
                 const editorValue = document.querySelector('#editor .ql-editor').innerHTML;
                 document.getElementById('target').value = editorValue
+            });
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('editor', () =>  ({
+                    urlPrevImg : "{{ $artikel ? asset('img/'.$artikel->gambar) : "" }}",
+                    prevImg(event){
+                        console.log(event.target.files[0]);
+                        this.urlPrevImg = URL.createObjectURL(event.target.files[0])
+                    },
+                }))
             })
         </script>
 @endpush
@@ -19,10 +28,22 @@
         <h1>{{ $artikel ? "Edit artikel berjudul $artikel->judul" : 'Buat artikel baru'}}</h1>
     </div>
 
-    <div class="card col-span-12">
-        <form action="{{ route('d.writer.artikel.store') }}" method="POST">
+    <div class="card col-span-12" x-data="editor">
+        <form action="{{ route('d.writer.artikel.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            {{-- ID  --}}
             <input type="hidden" value="{{ $artikel->id ?? null }}" name="edit_id">
+            {{-- JUDUL --}}
+            <div class="form-control">
+                <label class="label">
+                <span class="label-text">Judul</span>
+                </label>
+                <input type="text" class="input" name="judul" value="{{ old('judul') ?? $artikel->judul ?? '' }}">
+            </div>
+            @error('judul')
+                <small class="text-error">{{ $message }}</small>
+            @enderror
+            {{-- KATEGORI --}}
             <div class="form-control">
                 <label class="label">
                     <span class="label-text">Kategori</span>
@@ -37,15 +58,24 @@
             @error('kategori_id')
                 <small class="text-error">{{ $message }}</small>
             @enderror
-            <div class="form-control">
+            {{-- GAMBAR --}}
+            <input type="hidden" value="{{ $artikel->id ?? null }}" name="edit_id">
+            <div class="form-control items-start">
                 <label class="label">
-                <span class="label-text">Judul</span>
+                    <span class="label-text">Gambar</span>
                 </label>
-                <input type="text" class="input" name="judul" value="{{ old('judul') ?? $artikel->judul ?? '' }}">
+                <div class="flex flex-row space-x-2 items-center">
+                    <label for="gambar" class="btn btn-primary">Pilih Gambar</label>
+                    <a target="_blank" :href="urlPrevImg">
+                        <img :src="urlPrevImg" x-show="urlPrevImg" class="h-12"/>
+                    </a>
+                </div>
+                <input id="gambar" type="file" class="hidden" name="gambar" @change="prevImg($event)">
             </div>
-            @error('judul')
+            @error('gambar')
                 <small class="text-error">{{ $message }}</small>
             @enderror
+            {{-- ISI --}}
             <div class="form-control">
                 <label class="label">
                 <span class="label-text">Isi</span>
