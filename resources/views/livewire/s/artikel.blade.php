@@ -198,7 +198,7 @@
             </div>
         </div>
         <article class="prose text-base-content mt-8">
-            <img src="{{ asset("img/".$artikel->gambar) }}" alt="" class="">
+            <img src="{{ asset("storage/".$artikel->gambar) }}" alt="" class="">
             {!! $artikel->isi !!}
         </article>
         <div class="form-control mt-8">

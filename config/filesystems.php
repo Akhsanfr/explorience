@@ -32,7 +32,8 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => public_path('storage'),
+            // 'root' => storage_path('app'),
         ],
 
         'public' => [
@@ -67,7 +68,10 @@ return [
     */
 
     'links' => [
+
         public_path('img/artikel') => storage_path('app/artikel'),
+        // public_path('/home/explorie/repositories/main_laravel/storage/app/artikel') => storage_path('/home/explorie/public_html/img/artikel'),
+        // /home/explorie/repositories/main_laravel/storage/app/artikel /home/explorie/public_html/img/artikel
     ],
 
 ];

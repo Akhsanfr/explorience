@@ -16,6 +16,7 @@ use App\Http\Livewire\S\Explore;
 use App\Http\Livewire\S\NewRelease;
 use App\Http\Livewire\S\Trending;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
@@ -77,6 +78,9 @@ Route::post('/auth/logout', function(Request $request){
 
 Route::get('/tes', function(){
     return view('tes');
+});
+Route::get('art', function(){
+    return Artisan::call('storage:link');
 });
 // ARTIKEL
 Route::get('/{slug}', Artikel::class)->name('artikel');
