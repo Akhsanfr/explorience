@@ -18,7 +18,7 @@ class Artikel extends Component
         if($user->role('writer')){
             $artikels->where('user_writer_id', $user->id);
         }
-        $this->artikels = $artikels->paginate(10);
+        $this->artikels = $artikels->orderBy('updated_at', "DESC")->paginate(10);
     }
 
     public function render()

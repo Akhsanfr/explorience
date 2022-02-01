@@ -31,6 +31,8 @@
                         <th>Writer</th>
                     @endcannot
                     <th>Supervisor</th>
+                    <th>Tanggal Create</th>
+                    <th>Tanggal Edit</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -45,6 +47,9 @@
                             <td>{{ $artikel->writer->nama}}</td>
                         @endcannot
                         <td>{{ $artikel->supervisor->nama ?? "Belum ada supervisor"}}</td>
+                        <td>{{ Carbon\Carbon::parse($artikel->updated_at)->format('Y-m-d H:i:s') }}</td>
+                        {{-- <td>{{ getTime($artikel->created_at) }}</td> --}}
+                        <td>{{ getTime($artikel->updated_at) }}</td>
                         <td>
                             <div class="btn-group">
                                 <a href="{{ route('artikel', ['slug' => $artikel->slug]) }}" class="btn btn-sm btn-primary">View</a>

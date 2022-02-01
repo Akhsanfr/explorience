@@ -54,7 +54,9 @@ class ArtikelSeeder extends Seeder
                 "isi_en" => "<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en </p>",
                 "user_writer_id" => $val[0],
                 "kategori_id" => $val[1],
-                "status_aktivasi" => round(rand(0,1)) ? "aktif" : ( round(rand(0,1)) ? "ditolak" : "tidak aktif")
+                "status_aktivasi" => round(rand(0,1)) ? "aktif" : ( round(rand(0,1)) ? "ditolak" : "tidak aktif"),
+                "created_at" => "2022-02-01 00:00:0$key",
+                "updated_at" => "2022-02-01 00:01:0$key"
             ]);
 
         }
@@ -192,7 +194,9 @@ class ArtikelSeeder extends Seeder
             pola pikirnya dari konsep fisika kedalam kehidupan nyata.</p>',
             'isi_en' => '<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi expedita optio fuga atque illo culpa. Sint itaque aperiam illum amet. -en </p>',
             'user_writer_id' => 3,
-            'kategori_id' => 1
+            'kategori_id' => 1,
+            "created_at" => "2022-02-01 01:00:00",
+            "updated_at" => "2022-02-01 02:00:00"
         ]);
     }
 }
