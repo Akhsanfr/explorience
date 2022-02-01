@@ -13,7 +13,7 @@
             });
             document.addEventListener('alpine:init', () => {
                 Alpine.data('editor', () =>  ({
-                    urlPrevImg : "{{ $artikel ? asset('img/'.$artikel->gambar) : "" }}",
+                    urlPrevImg : "{{ $artikel ? asset('storage/'.$artikel->gambar) : "" }}",
                     prevImg(event){
                         console.log(event.target.files[0]);
                         this.urlPrevImg = URL.createObjectURL(event.target.files[0])
