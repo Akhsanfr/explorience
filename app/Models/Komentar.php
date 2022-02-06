@@ -11,7 +11,7 @@ class Komentar extends Model
 
     protected $casts = [
         'artikel_id' => 'integer',
-        'user_id' => 'string',
+        'user_id' => 'integer',
         'parent_id' => 'integer',
         'reply_id' => 'integer'
     ];
