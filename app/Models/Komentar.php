@@ -9,9 +9,9 @@ class Komentar extends Model
 {
     use HasFactory;
 
-    protected $cast = [
+    protected $casts = [
         'artikel_id' => 'integer',
-        'user_id' => 'integer',
+        'user_id' => 'string',
         'parent_id' => 'integer',
         'reply_id' => 'integer'
     ];
