@@ -9,6 +9,13 @@ class Komentar extends Model
 {
     use HasFactory;
 
+    protected $cast = [
+        'artikel_id' => 'integer',
+        'user_id' => 'integer',
+        'parent_id' => 'integer',
+        'reply_id' => 'integer'
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
