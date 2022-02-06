@@ -17,10 +17,10 @@ class CreateKomentarsTable extends Migration
             $table->id();
             $table->foreignId('artikel_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->integer('parent_id');
-            $table->integer('user_tag_id')->nullable();
+            $table->integer('parent_id')->nullable();
             $table->text('isi');
-            $table->integer('likes');
+            $table->integer('reply_id')->nullable();
+            // $table->integer('likes');
             $table->timestamps();
         });
     }

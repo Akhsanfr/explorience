@@ -18,6 +18,8 @@ class CreateArtikelsTable extends Migration
             $table->string('slug');
             $table->string('judul');
             $table->string('judul_en')->nullable();
+            $table->string('desc');
+            $table->string('desc_en')->nullable();
             $table->string('gambar');
             $table->text('isi');
             $table->text('isi_en')->nullable();

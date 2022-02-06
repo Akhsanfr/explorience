@@ -1,7 +1,9 @@
 <?php
 namespace App\Providers;
 use Illuminate\Support\ServiceProvider;//import this
-use Illuminate\Support\Facades\Schema;class AppServiceProvider extends ServiceProvider{
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Carbon;
+class AppServiceProvider extends ServiceProvider{
   /**
   * Register any application services.
   *
@@ -16,5 +18,4 @@ use Illuminate\Support\Facades\Schema;class AppServiceProvider extends ServicePr
   * @return void
   */
    public function boot(){
-      //
    }}

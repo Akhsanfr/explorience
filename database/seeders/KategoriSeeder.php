@@ -28,9 +28,14 @@ class KategoriSeeder extends Seeder
                             'Statistika',
                             'Geografi',
                             'Sosiologi',
+                            'Gizi',
                             'Trivia',
                             'Indonesiaku',
-                        'Lentera Islami'];
+                            'Lentera Islami',
+                            'Ada Apa Dibalik Kata',
+                            'Act Project',
+                            'Expractixe'
+                        ];
 
         foreach( $kategories as $key => $kategori ){
 

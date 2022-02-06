@@ -1,3 +1,3 @@
 require("./bootstrap");
-// require("./alpine");
+require("./alpine");
 // require("./swal");

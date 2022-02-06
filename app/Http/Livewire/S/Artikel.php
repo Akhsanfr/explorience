@@ -5,7 +5,6 @@ namespace App\Http\Livewire\S;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use App\Models\Artikel as ModelsArtikel;
-use App\Models\Komentar;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,49 +12,47 @@ class Artikel extends Component
 {
     use AuthorizesRequests;
 
-    public $artikel;
     public $warnaColorLikes;
 
-    public function mount($slug){
-        $this->getArtikel($slug);
-    }
-
+    // === ARTIKEL === //
+    public $artikel;
+    public $auth_user_id;
     public function getArtikel($slug){
         $this->artikel = ModelsArtikel::where('slug', $slug)->first();
     }
 
-    public function getKomentar(){
-        $komentars = [];
-        foreach(Komentar::where('artikel_id', $this->artikel->id)->get() as $k){
-            $komentar = $k->toArray();
-            $komentar['user'] = $k->user->nama;
-            $komentar['avatar'] = $k->user->avatar;
-            // if have tag, get name the user
-            if($komentar['user_tag_id'] != 0){
-                $komentar['userTagNama'] = $k->userTag->nama;
-            }
-            array_push($komentars, $komentar);
-        }
-        return json_encode($komentars);
-    }
+    // public function getKomentar(){
+    //     $komentars = [];
+    //     foreach(Komentar::where('artikel_id', $this->artikel->id)->get() as $k){
+    //         $komentar = $k->toArray();
+    //         $komentar['user'] = $k->user->nama;
+    //         $komentar['avatar'] = $k->user->avatar;
+    //         // if have tag, get name the user
+    //         if($komentar['user_tag_id'] != 0){
+    //             $komentar['userTagNama'] = $k->userTag->nama;
+    //         }
+    //         array_push($komentars, $komentar);
+    //     }
+    //     return json_encode($komentars);
+    // }
 
-    public function addKomentar($parent_id, $isi, $user_tag_id){
-        if(is_null(Auth::id())){
-            return 'Silakan Anda login terlebih dahulu';
-        }
-        $komentar = new Komentar();
-        $komentar->artikel_id = $this->artikel->id;
-        $komentar->user_id = Auth::id();
-        $komentar->parent_id = $parent_id;
-        $komentar->user_tag_id = $user_tag_id;
-        $komentar->isi = $isi;
-        $komentar->likes = 0;
-        if($komentar->save()){
-            return 'sukses';
-        } else {
-            return 'gagal';
-        }
-    }
+    // public function addKomentar($parent_id, $isi, $user_tag_id){
+    //     if(is_null(Auth::id())){
+    //         return 'Silakan Anda login terlebih dahulu';
+    //     }
+    //     $komentar = new Komentar();
+    //     $komentar->artikel_id = $this->artikel->id;
+    //     $komentar->user_id = Auth::id();
+    //     $komentar->parent_id = $parent_id;
+    //     $komentar->user_tag_id = $user_tag_id;
+    //     $komentar->isi = $isi;
+    //     $komentar->likes = 0;
+    //     if($komentar->save()){
+    //         return 'sukses';
+    //     } else {
+    //         return 'gagal';
+    //     }
+    // }
 
     public function likes(){
         if(is_null(Auth::user())){
@@ -81,26 +78,26 @@ class Artikel extends Component
         }
     }
 
-    public function likesKomentar($komentar_id){
-        if(is_null(Auth::user())){
-            return json_encode([
-                "status" => "failed",
-                "message" => "Silakan Anda login terlebih dahulu!"
-            ]);
-        } else {
-            $komentar = Komentar::find($komentar_id);
-            $komentar->likes()->toggle([Auth::id()]);
-            return json_encode([
-                "status" => "OK",
-                "pesan" => 'Sukses',
-            ]);
-        }
-    }
+    // public function likesKomentar($komentar_id){
+    //     if(is_null(Auth::user())){
+    //         return json_encode([
+    //             "status" => "failed",
+    //             "message" => "Silakan Anda login terlebih dahulu!"
+    //         ]);
+    //     } else {
+    //         $komentar = Komentar::find($komentar_id);
+    //         $komentar->likes()->toggle([Auth::id()]);
+    //         return json_encode([
+    //             "status" => "OK",
+    //             "pesan" => 'Sukses',
+    //         ]);
+    //     }
+    // }
 
-    public function getLikesKomentar(){
-        return json_encode(DB::table('komentar_user')->where('user_id', Auth::id())->get());
+    // public function getLikesKomentar(){
+    //     return json_encode(DB::table('komentar_user')->where('user_id', Auth::id())->get());
 
-    }
+    // }
 
     public function edit($id){
         session(['artikel_id' => $id]);
@@ -116,6 +113,17 @@ class Artikel extends Component
             $this->artikel->user_supervisor_id = null;
         }
         $this->artikel->save();
+    }
+
+
+
+
+    // === LIFECYCLE === //
+
+    public function mount($slug){
+        $this->getArtikel($slug);
+        $this->auth_user_id = auth()->id();
+        // $this->artikel && $this->getKomentars();
     }
 
     public function render()

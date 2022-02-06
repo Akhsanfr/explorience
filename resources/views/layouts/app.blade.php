@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="tema()" :data-theme="tema" x-init="cekTema()">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="tema" :data-theme="dark ? 'dark' : 'light'">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        @stack('head')
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -12,15 +13,14 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        @stack('styles')
+        {{-- @stack('styles') --}}
 
         {{-- Icon Title --}}
         <link rel="icon" href="{{ asset('img/logo.png') }}">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        <script src="//unpkg.com/alpinejs" defer></script>
-        {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+        {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
 
         @livewireStyles
     </head>
@@ -48,35 +48,28 @@
         </main>
         <livewire:c.footer>
         @livewireScripts
-        @stack('script')
+        @stack('scripts')
         <script>
-            function tema(){
-                return {
-                    tema : 'dark',
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('tema', () => ({
+                    dark : true,
                     setTema(){
-                        if(this.tema == 'light'){
-                            document.cookie = "tema=dark; expires= 18 Dec 2022 12:00:00 UTC; SameSite=None; Secure";
-                            this.tema = 'dark';
+                        if(this.dark){
+                            localStorage.setItem('tema', 'light')
+                            this.dark = false;
                         } else {
-                            document.cookie = "tema=light; expires= 18 Dec 2022 12:00:00 UTC; SameSite=None; Secure";
-                            this.tema = 'light';
+                            localStorage.setItem('tema', 'dark')
+                            this.dark = true;
                         }
                     },
                     cekTema(){
-                        let tema;
-                        let key = 'tema';
-                        Cookies = decodeURIComponent(document.cookie).split(';');
-                        Cookies.forEach((e)=>{
-                            Cookie = e.substr(1);
-                            NamaCookie = Cookie.split('=')[0];
-                            if(NamaCookie == key){
-                                tema = Cookie.split('=')[1];
-                            }
-                        });
-                        return this.tema = tema;
+                        return this.dark = localStorage.getItem('tema') === 'dark' ? true : false;
+                    },
+                    init(){
+                        this.cekTema();
                     }
-                }
-            }
+                }))
+            })
         </script>
     </body>
 </html>

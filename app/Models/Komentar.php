@@ -17,6 +17,10 @@ class Komentar extends Model
         return $this->belongsTo(User::class, 'user_tag_id');
     }
 
+    public function parent(){
+        return $this->belongsTo(Komentar::class, 'reply_id');
+    }
+
     public function likes(){
         return $this->belongsToMany(User::class);
     }
